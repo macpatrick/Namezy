@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namezy</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Namezy</h1>
+    <p class="tagline">Find a brand name you can actually own.</p>
+  </header>
+
+  <main>
+    <section id="input-panel" class="panel">
+      <form id="generate-form">
+        <label for="description">Describe your company or product</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          placeholder="e.g. Premium iPhone camera app that creates nostalgic instant photos"
+          required
+        ></textarea>
+        <p class="hint">Generating a full shortlist can take 20-60 seconds.</p>
+
+        <label for="company_name">Working name / codename (optional)</label>
+        <input type="text" id="company_name" name="company_name" placeholder="Optional -- for your reference only" />
+
+        <button type="submit" id="generate-btn">Generate Names</button>
+        <span id="spinner" class="spinner hidden"></span>
+        <span id="status-message" class="status-message"></span>
+      </form>
+    </section>
+
+    <section id="results-panel" class="panel hidden">
+      <div class="results-header">
+        <h2>Results <span id="result-count" class="pill"></span></h2>
+        <div class="results-actions">
+          <span id="google-status" class="pill pill-muted"></span>
+          <a id="export-link" class="button-secondary" href="#">Export CSV</a>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <canvas id="score-chart" height="90"></canvas>
+      </div>
+
+      <table id="results-table">
+        <thead>
+          <tr>
+            <th data-sort="favorite" class="col-favorite">&#9733;</th>
+            <th data-sort="candidate">Name</th>
+            <th data-sort="method">Method</th>
+            <th data-sort="score" class="sorted-desc">Score</th>
+            <th data-sort="domain_com">.com</th>
+            <th data-sort="domain_io">.io</th>
+            <th data-sort="domain_app">.app</th>
+            <th data-sort="google">Web</th>
+          </tr>
+        </thead>
+        <tbody id="results-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
