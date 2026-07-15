@@ -77,6 +77,12 @@ Candidate names and domain/availability checks are generated heuristically and a
 - Social handle availability
 - Iterative generation (learn from favorited names, bias the next batch toward what worked)
 
+## Support
+
+If you find Namezy helpful, consider supporting the project:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/macpatrick)
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
